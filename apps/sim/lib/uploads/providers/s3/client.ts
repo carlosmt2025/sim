@@ -46,6 +46,8 @@ export function getS3Client(): S3Client {
 
   _s3Client = new S3Client({
     region,
+    endpoint: env.S3_ENDPOINT || undefined,
+    forcePathStyle: !!env.S3_FORCE_PATH_STYLE,
     credentials:
       env.AWS_ACCESS_KEY_ID && env.AWS_SECRET_ACCESS_KEY
         ? {
